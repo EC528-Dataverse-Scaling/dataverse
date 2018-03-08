@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="50by1000.dta">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/scripts/search/data/tabular/50by1000.dta.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

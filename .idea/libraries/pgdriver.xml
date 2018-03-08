@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="pgdriver">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/scripts/installer/pgdriver/postgresql-42.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/installer/pgdriver/postgresql-9.3-1104.jdbc4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/installer/pgdriver/postgresql-9.2-1004.jdbc4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/installer/pgdriver/postgresql-9.0-802.jdbc4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/installer/pgdriver/postgresql-9.1-902.jdbc4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/installer/pgdriver/postgresql-9.4.1212.jar!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/installer/pgdriver/postgresql-8.4-703.jdbc4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

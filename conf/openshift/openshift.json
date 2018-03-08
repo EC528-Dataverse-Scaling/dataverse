@@ -99,7 +99,7 @@
         "name": "dataverse-plus-glassfish"
       },
       "spec": {
-        "dockerImageRepository": "iqss/dataverse-glassfish:latest"
+        "dockerImageRepository": "ec528dv/dataverse-glassfish:latest"
       }
     },
     {
@@ -123,15 +123,18 @@
       }
     },
     {
-      "kind": "DeploymentConfig",
-      "apiVersion": "v1",
+      "kind": "StatefulSet",
+      "apiVersion": "apps/v1beta1",
       "metadata": {
         "name": "dataverse-glassfish",
         "annotations": {
-          "template.alpha.openshift.io/wait-for-ready": "true"
+          "template.alpha.openshift.io/wait-for-ready": "true",
+          "alpha.image.policy.openshift.io/resolve-names": "*"
         }
       },
       "spec": {
+        "serviceName" : "dataverse-glassfish",
+        "replicas": 2, 
         "template": {
           "metadata": {
             "labels": {
@@ -215,9 +218,12 @@
             "type": "ConfigChange"
           }
         ],
-        "replicas": 1,
+       
         "selector": {
-          "name": "iqss-dataverse-glassfish"
+          "name": "iqss-dataverse-glassfish",
+         "matchLabels" : {
+           "name": "iqss-dataverse-glassfish"
+        }
         }
       }
     },

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="glassfish-grizzly-extra-all">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/doc/sphinx-guides/source/_static/installation/files/issues/2180/grizzly-patch/glassfish-grizzly-extra-all.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

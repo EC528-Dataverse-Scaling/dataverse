@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="binary">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/scripts/search/data/binary/trees.zip!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/search/data/binary/health.zip!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/search/data/binary/3files.zip!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/search/data/binary/1000files.zip!/" />
+      <root url="jar://$PROJECT_DIR$/scripts/search/data/binary/100files.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

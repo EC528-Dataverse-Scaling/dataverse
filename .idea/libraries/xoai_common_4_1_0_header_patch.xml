@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xoai-common-4.1.0-header-patch">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/local_lib/com/lyncode/xoai-common/4.1.0-header-patch/xoai-common-4.1.0-header-patch.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

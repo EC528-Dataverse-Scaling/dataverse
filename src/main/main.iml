@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/java" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="fits-2012-10-25-generated" level="project" />
+    <orderEntry type="library" name="handle-2006-06-16-generated" level="project" />
+    <orderEntry type="library" name="1.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="unf-6.0" level="project" />
+    <orderEntry type="library" name="4.1.0-header-patch1" level="project" />
+    <orderEntry type="library" name="4.1.0-header-patch" level="project" />
+    <orderEntry type="library" name="jhove-1.11.0" level="project" />
+    <orderEntry type="library" name="xoai-common-4.1.0-header-patch" level="project" />
+  </component>
+</module>

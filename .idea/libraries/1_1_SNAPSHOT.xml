@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="1.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/local_lib/org/swordapp/sword2-server/1.1-SNAPSHOT/sword2-server-1.1-SNAPSHOT-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/local_lib/org/swordapp/sword2-server/1.1-SNAPSHOT/sword2-server-1.1-SNAPSHOT-classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/local_lib/org/swordapp/sword2-server/1.1-SNAPSHOT/sword2-server-1.1-SNAPSHOT-sources.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

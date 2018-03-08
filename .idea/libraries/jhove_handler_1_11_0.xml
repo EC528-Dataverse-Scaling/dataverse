@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jhove-handler-1.11.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/local_lib/edu/harvard/hul/ois/jhove/jhove-handler/1.11.0/jhove-handler-1.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
