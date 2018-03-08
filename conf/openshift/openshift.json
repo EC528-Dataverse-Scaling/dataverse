@@ -99,7 +99,7 @@
         "name": "dataverse-plus-glassfish"
       },
       "spec": {
-        "dockerImageRepository": "ec528dv/dataverse-glassfish:latest"
+        "dockerImageRepository": "ec528dv/dataverse-glassfish:postgres"
       }
     },
     {
@@ -150,6 +150,10 @@
                   }
                 ],
                 "env": [
+		  {
+                    "name": "POSTGRES_SERVER",
+                    "value": "dataverse-postgresql-0"
+                  },
                   {
                     "name": "POSTGRES_SERVICE_HOST",
                     "value": "dataverse-postgresql-service"
@@ -222,8 +226,8 @@
       }
     },
     {
-      "kind": "DeploymentConfig",
-      "apiVersion": "v1",
+      "kind": "StatefulSet",
+      "apiVersion": "apps/v1beta1",
       "metadata": {
         "name": "dataverse-postgresql",
         "annotations": {
@@ -231,6 +235,8 @@
         }
       },
       "spec": {
+	"serviceName" : "iqss-dataverse-postgresql",
+	"replicas" : 3,
         "template": {
           "metadata": {
             "labels": {
@@ -241,7 +247,7 @@
             "containers": [
               {
                 "name": "centos-postgresql-94-centos7",
-                "image": "centos-postgresql-94-centos7",
+                "image": "centos/postgresql-94-centos7",
                 "ports": [
                   {
                     "containerPort": 5432,
@@ -300,7 +306,7 @@
               ],
               "from": {
                 "kind": "ImageStreamTag",
-                "name": "centos-postgresql-94-centos7:latest"
+                "name": "centos/postgresql-94-centos7:latest"
               }
             }
           },
@@ -308,9 +314,11 @@
             "type": "ConfigChange"
           }
         ],
-        "replicas": 1,
         "selector": {
-          "name": "iqss-dataverse-postgresql"
+          "name": "iqss-dataverse-postgresql",
+	  "matchLabels" : {
+	    "name" : "iqss-dataverse-postgresql"
+	  }
         }
       }
     },

@@ -239,7 +239,8 @@ if ($mailserver) {
 if ($gfdir) {
     $CONFIG_DEFAULTS{'GLASSFISH_DIRECTORY'} = $gfdir;
 }
-
+print "\n HELLO \n"
+print "\n IT WORKS!! $CONFIG_DEFAULTS('POSTGRES_SERVER') \n"
 print "\nWelcome to the Dataverse installer.\n";
 unless ($postgresonly) {
     print "You will be guided through the process of setting up a NEW\n";
