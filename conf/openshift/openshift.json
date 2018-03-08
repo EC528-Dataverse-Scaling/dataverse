@@ -99,7 +99,7 @@
         "name": "dataverse-plus-glassfish"
       },
       "spec": {
-        "dockerImageRepository": "iqss/dataverse-glassfish:latest"
+        "dockerImageRepository": "ec528dv/dataverse-glassfish:latest"
       }
     },
     {
