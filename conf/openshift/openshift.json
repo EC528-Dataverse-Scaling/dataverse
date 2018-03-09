@@ -99,7 +99,7 @@
         "name": "dataverse-plus-glassfish"
       },
       "spec": {
-        "dockerImageRepository": "ec528dv/dataverse-glassfish:latest"
+        "dockerImageRepository": "ec528dv/dataverse-glassfish"
       }
     },
     {
@@ -109,7 +109,7 @@
         "name": "centos-postgresql-94-centos7"
       },
       "spec": {
-        "dockerImageRepository": "centos/postgresql-94-centos7:latest"
+        "dockerImageRepository": "centos/postgresql-94-centos7"
       }
     },
     {
@@ -119,7 +119,7 @@
         "name": "iqss-dataverse-solr"
       },
       "spec": {
-        "dockerImageRepository": "iqss/dataverse-solr:latest"
+        "dockerImageRepository": "iqss/dataverse-solr"
       }
     },
     {
@@ -142,7 +142,7 @@
             "containers": [
               {
                 "name": "dataverse-plus-glassfish",
-                "image": "dataverse-plus-glassfish",
+                "image": "ec528dv/dataverse-glassfish:latest",
                 "ports": [
                   {
                     "containerPort": 8080,
@@ -360,7 +360,7 @@
           "rollingParams": {
             "updatePeriodSeconds": 1,
             "intervalSeconds": 1,
-            "timeoutSeconds": 300
+            "timeoutSeconds": 500
           },
           "resources": {}
         },

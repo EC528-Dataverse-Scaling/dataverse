@@ -239,7 +239,7 @@ if ($mailserver) {
 if ($gfdir) {
     $CONFIG_DEFAULTS{'GLASSFISH_DIRECTORY'} = $gfdir;
 }
-
+print "\nNEW DOCKERHUB TEST.\n";
 print "\nWelcome to the Dataverse installer.\n";
 unless ($postgresonly) {
     print "You will be guided through the process of setting up a NEW\n";
@@ -273,7 +273,7 @@ elsif ( $uname_tokens[0] eq "Linux" ) {
     }
 }
 else {
-    print "\nWARNING: This appears to be neither a Linux or MacOS X system!\n";
+    print "\nWARoNING: This appears to be neither a Linux or MacOS X system!\n";
     print "This installer script will most likely fail. Please refer to the\n";
     print "DVN Installers Guide for more information.\n\n";
 
