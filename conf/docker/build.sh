@@ -37,6 +37,6 @@ cp ../../scripts/installer/dvinstall.zip dataverse-glassfish
 cp ../../doc/sphinx-guides/source/_static/util/default.config dataverse-glassfish
 cp ../../downloads/glassfish-4.1.zip dataverse-glassfish
 cp ../../downloads/weld-osgi-bundle-2.2.10.Final-glassfish4.jar dataverse-glassfish
-docker build -t ec528dv/dataverse-glassfish:$TAG dataverse-glassfish
+docker build -t patrickdillon/dataverse-glassfish:$TAG dataverse-glassfish
 # FIXME: Check the output of `docker build` and only push on success.
-docker push ec528dv/dataverse-glassfish:$TAG
+docker push patrickdillon/dataverse-glassfish:$TAG
