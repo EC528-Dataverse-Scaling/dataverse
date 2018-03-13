@@ -239,8 +239,7 @@ if ($mailserver) {
 if ($gfdir) {
     $CONFIG_DEFAULTS{'GLASSFISH_DIRECTORY'} = $gfdir;
 }
-print "\n HELLO \n";
-print "\n IT WORKS!! $CONFIG_DEFAULTS('POSTGRES_SERVER') \n";
+print "\n DEVELOPMENT TEST \n";
 print "\nWelcome to the Dataverse installer.\n";
 unless ($postgresonly) {
     print "You will be guided through the process of setting up a NEW\n";
@@ -750,7 +749,7 @@ if ( $psql_admin_exec eq "" || system( $psql_admin_exec . "/psql -h " . $CONFIG_
 	print "(Or you simply don't have psql installed on this server)\n";
 	print "It IS possible to configure a database for your Dataverse on a remote server,\n";
 	print "without having admin access to that remote Postgres installation.\n\n";
-	print "In order to do that, pleaes copy the installer (the entire package) to the server\n";
+	print "In order to do that, please copy the installer (the entire package) to the server\n";
 	print "where PostgresQL is running and run the installer with the \"--pg_only\" option:\n\n";
 	print "   ./install --pg_only\n\n";
 
