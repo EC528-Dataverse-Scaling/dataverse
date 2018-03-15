@@ -99,7 +99,7 @@
         "name": "dataverse-plus-glassfish"
       },
       "spec": {
-        "dockerImageRepository": "jcliffbu/glassboat:test"
+        "dockerImageRepository": "ec528dv/dataverse-glassfish:latest"
       }
     },
     {
@@ -134,7 +134,7 @@
       },
       "spec": {
         "serviceName" : "dataverse-glassfish",
-        "replicas": 3, 
+        "replicas": 2, 
         "template": {
           "metadata": {
             "labels": {
@@ -145,7 +145,7 @@
             "containers": [
               {
                 "name": "dataverse-plus-glassfish",
-                "image": "jcliffbu/glassboat:test",
+                "image": "dataverse-plus-glassfish",
                 "ports": [
                   {
                     "containerPort": 8080,
@@ -153,14 +153,6 @@
                   }
                 ],
                 "env": [
-                
-                       { "name": "MY_POD_NAME",
-                          "valueFrom": {
-                          "fieldRef": {
-                           "fieldPath": "metadata.name"
-                         }
-                        }
-                       },
                   {
                     "name": "POSTGRES_SERVICE_HOST",
                     "value": "dataverse-postgresql-service"
@@ -190,7 +182,7 @@
                     "value": "dvndb"
                   }
                 ],
-                "imagePullPolicy": "Always",
+                "imagePullPolicy": "IfNotPresent",
                 "securityContext": {
                   "capabilities": {},
                   "privileged": false
