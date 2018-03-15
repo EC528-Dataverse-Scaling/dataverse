@@ -1,10 +1,7 @@
 FROM centos:7.2.1511
 MAINTAINER Dataverse (support@dataverse.org)
 
-COPY glassfish-4.1.zip /tmp
-COPY weld-osgi-bundle-2.2.10.Final-glassfish4.jar /tmp
-COPY default.config /tmp
-COPY dvinstall.zip /tmp
+
 
 # Install dependencies
 #RUN yum install -y unzip
@@ -18,6 +15,11 @@ RUN yum install -y \
     sha1sum \
     unzip \
     wget
+
+COPY glassfish-4.1.zip /tmp
+COPY weld-osgi-bundle-2.2.10.Final-glassfish4.jar /tmp
+COPY default.config /tmp
+COPY dvinstall.zip /tmp
 
 ENV GLASSFISH_DOWNLOAD_SHA1 d1a103d06682eb08722fbc9a93089211befaa080
 ENV GLASSFISH_DIRECTORY "/usr/local/glassfish4"

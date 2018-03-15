@@ -191,7 +191,13 @@ fi
 
 ###
 # Set up the data source for the timers
+
+echo $MY_POD_NAME
+if [ $MY_POD_NAME == "dataverse-glassfish-0" ]
+then
 ./asadmin $ASADMIN_OPTS set configs.config.server-config.ejb-container.ejb-timer-service.timer-datasource=jdbc/VDCNetDS
+echo "Only I Run The Jobs"
+fi
 
 ###
 # Add the necessary JVM options: 
