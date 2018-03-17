@@ -42,6 +42,7 @@
         "selector": {
           "name": "iqss-dataverse-postgresql"
         },
+	"clusterIP": "None",
         "ports": [
           {
             "name": "database",
@@ -235,7 +236,7 @@
         }
       },
       "spec": {
-	"serviceName" : "iqss-dataverse-postgresql",
+	"serviceName" : "dataverse-postgresql-service",
 	"replicas" : 3,
         "template": {
           "metadata": {
