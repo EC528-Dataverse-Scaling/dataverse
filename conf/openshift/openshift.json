@@ -32,26 +32,7 @@
         ]
       }
     },
-    {
-      "kind": "Service",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "dataverse-postgresql-service"
-      },
-      "spec": {
-        "selector": {
-          "name": "iqss-dataverse-postgresql"
-        },
-        "ports": [
-          {
-            "name": "database",
-            "protocol": "TCP",
-            "port": 5432,
-            "targetPort": 5432
-          }
-        ]
-      }
-    },
+
     {
       "kind": "Service",
       "apiVersion": "v1",
@@ -225,103 +206,7 @@
         }
       }
     },
-    {
-      "kind": "StatefulSet",
-      "apiVersion": "apps/v1beta1",
-      "metadata": {
-        "name": "dataverse-postgresql",
-        "annotations": {
-          "template.alpha.openshift.io/wait-for-ready": "true"
-        }
-      },
-      "spec": {
-	"serviceName" : "iqss-dataverse-postgresql",
-	"replicas" : 3,
-        "template": {
-          "metadata": {
-            "labels": {
-              "name": "iqss-dataverse-postgresql"
-            }
-          },
-          "spec": {
-            "containers": [
-              {
-                "name": "centos-postgresql-94-centos7",
-                "image": "centos/postgresql-94-centos7",
-                "ports": [
-                  {
-                    "containerPort": 5432,
-                    "protocol": "TCP"
-                  }
-                ],
-                "env": [
-                  {
-                    "name": "POSTGRESQL_USER",
-                    "value": "dvnapp"
-                  },
-                  {
-                    "name": "POSTGRESQL_PASSWORD",
-                    "value": "secret"
-                  },
-                  {
-                    "name": "POSTGRESQL_DATABASE",
-                    "value": "dvndb"
-                  },
-                  {
-                    "name": "POSTGRESQL_ADMIN_PASSWORD",
-                    "value": "secret"
-                  }
 
-                ],
-                "resources": {
-                  "limits": {
-                    "memory": "256Mi"
-                  }
-                },
-                "imagePullPolicy": "IfNotPresent",
-                "securityContext": {
-                  "capabilities": {},
-                  "privileged": false
-                }
-              }
-            ]
-          }
-        },
-        "strategy": {
-          "type": "Rolling",
-          "rollingParams": {
-            "updatePeriodSeconds": 1,
-            "intervalSeconds": 1,
-            "timeoutSeconds": 300
-          },
-          "resources": {}
-        },
-        "triggers": [
-          {
-            "type": "ImageChange",
-            "imageChangeParams": {
-              "automatic": true,
-              "containerNames": [
-                "centos-postgresql-94-centos7"
-              ],
-              "from": {
-                "kind": "ImageStreamTag",
-                "name": "centos/postgresql-94-centos7:latest"
-              }
-            }
-          },
-          {
-            "type": "ConfigChange"
-          }
-        ],
-        "selector": {
-          "name": "iqss-dataverse-postgresql",
-	  "matchLabels" : {
-	    "name" : "iqss-dataverse-postgresql"
-	  }
-        }
-      }
-    },
     {
       "kind": "DeploymentConfig",
       "apiVersion": "v1",

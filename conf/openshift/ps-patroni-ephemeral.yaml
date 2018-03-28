@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dataverse-postgresql-service
+  labels:
+    component: postgresql-client
+spec:
+  selector:
+    name: iqss-dataverse-postgresql
+  ports:
+  - port: 5432
+  clusterIP: None
+
+---
+
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: dataverse-postgresql
+  labels:
+    component: iqss-dataverse-postgresql
+spec:
+  serviceName: dataverse-postgresql-service
+  replicas: 3
+  template:
+    metadata:
+      name: dataverse-postgresql
+      annotations:
+        pod.alpha.kubernetes.io/initialized: "true"
+        template.alpha.openshift.io/wait-for-ready: "true"
+      labels:
+        name: "iqss-dataverse-postgresql"
+    spec:
+      containers:
+      - name: patroni
+        image: jberkus/patroni:5.7
+        env:
+        - name: CLUSTERNAME
+          value: patroni01
+        - name: POD_GROUP
+          value: patroni
+        - name: SUPERPASS
+          valueFrom:
+            secretKeyRef:
+              name: patroni
+              key: password-superuser
+        - name: ADMINPASS
+          valueFrom:
+            secretKeyRef:
+              name: patroni
+              key: password-admin
+        - name: REPLICATIONPASS
+          valueFrom:
+            secretKeyRef:
+              name: patroni
+              key: password-standby
+        - name: POD_NS
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: ETCD_HOST
+          value: etcd.$(POD_NS).svc.cluster.local
+        - name: POSTGRESQL_USER
+          value: dvnapp
+        - name: POSTGRESQL_PASSWORD
+          value: secret
+        - name: POSTGRESQL_DATABASE
+          value: dvndb
+        - name: POSTGRESQL_ADMIN_PASSWORD
+          value: secret
+        ports:
+        - containerPort: 8008
+        - containerPort: 5432
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        volumeMounts:
+        - name: pgdata
+          mountPath: /pgdata
+        - mountPath: /tmp/patroni
+          name: patroni-config
+          readOnly: true
+      volumes:
+      - name: patroni-config
+        secret:
+          secretName: patroni
+      - name: pgdata
+        emptyDir: {}
