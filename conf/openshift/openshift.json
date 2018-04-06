@@ -245,6 +245,18 @@
             }
           },
           "spec": {
+	    "volumes" : [
+	      {
+		"name" : "conf",
+		"emptyDir" : {}
+	      },
+	      {
+		"name" : "config-map",
+		"configMap": {
+		  "name" : "psql"
+		}
+	      }
+	    ],
             "containers": [
               {
                 "name": "centos-postgresql-94-centos7",
@@ -274,6 +286,12 @@
                   }
 
                 ],
+		"volumeMounts": [
+		  {
+		    "name" : "conf",
+		    "mountPath" : "/var/lib/pgsql/data/pga_hba.conf"
+		  }
+		],
                 "resources": {
                   "limits": {
                     "memory": "256Mi"
@@ -283,11 +301,24 @@
                 "securityContext": {
                   "capabilities": {},
                   "privileged": false
-                }
+                },
+		"command" : [
+		  "bash",
+		  "-c",
+		  "set -ex",
+		  "[[ `hostname` =~ -([0-9]+)$ ]] || exit 1",
+		  "ordinal=${BASH_REMATCH[1]}",
+		  "if [[ $ordinal -eq 0 ]]; then",
+		  "cp /mnt/config-map/master.conf /var/lib/pgsql/data/pga_hba.conf",
+		  "else",
+		  "cp /mnt/config-map/slave.conf /var/lib/pgsql/data/pga_hba.conf",
+		  "fi"
+		]
               }
             ]
           }
         },
+
         "strategy": {
           "type": "Rolling",
           "rollingParams": {
