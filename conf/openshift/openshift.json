@@ -245,18 +245,6 @@
             }
           },
           "spec": {
-	    "volumes" : [
-	      {
-		"name" : "conf",
-		"emptyDir" : {}
-	      },
-	      {
-		"name" : "config-map",
-		"configMap": {
-		  "name" : "psql"
-		}
-	      }
-	    ],
             "containers": [
               {
                 "name": "centos-postgresql-94-centos7",
@@ -313,16 +301,6 @@
                   }
 
                 ],
-		"volumeMounts": [
-		  {
-		    "name" : "conf",
-		    "mountPath" : "/var/lib/pgsql/data/pga_hba.conf"
-		  },
-		  {
-		    "name" : "config-map",
-		    "mountPath" : "/mnt/config-map"
-		  }
-		],
                 "resources": {
                   "limits": {
                     "memory": "256Mi"
