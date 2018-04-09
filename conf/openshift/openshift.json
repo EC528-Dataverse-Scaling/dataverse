@@ -260,7 +260,10 @@
             "containers": [
               {
                 "name": "centos-postgresql-94-centos7",
-                "image": "patrickdillon/dataverse-postgresql",
+                "image": "centos/postgresql-94-centos7",
+		"command": [
+		  "sh", "-c", "echo 'COMMAND'; [[ `hostname` =~ -([0-9]+)$ ]] || exit 1; ordinal=${BASH_REMATCH[1]}; if [[ $ordinal -eq 0 ]]; then run-postgresql-master; else run-postgresql-slave; fi;"
+		],
                 "ports": [
                   {
                     "containerPort": 5432,
@@ -281,8 +284,24 @@
                     "value": "secret"
                   },
 		  {
-		  "name": "POSTGRESQL_MASTER_PASSWORD",
+		    "name": "POSTGRESQL_MASTER_PASSWORD",
                     "value": "master"
+                  },
+		  {		  
+		    "name": "POSTGRESQL_MASTER_SERVICE_NAME",
+                    "value": "dataverse-postgresql-service"
+                  },
+		  {
+		    "name": "POSTGRESQL_MASTER_IP",
+		    "value": "dataverse-postgresql-0.dataverse-postgresql-service"
+		  },			  
+		  {		  
+		    "name": "postgresql_master_addr",
+                    "value": "dataverse-postgresql-0.dataverse-postgresql-service"
+                  },
+		  {		  
+		    "name": "master_fqdn",
+                    "value": "dataverse-postgresql-0.dataverse-postgresql-service"
                   },
                   {
                     "name": "POSTGRESQL_DATABASE",
