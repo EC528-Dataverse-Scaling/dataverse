@@ -250,7 +250,7 @@
                 "name": "centos-postgresql-94-centos7",
                 "image": "centos/postgresql-94-centos7",
 		"command": [
-		  "sh", "-c", "echo 'COMMAND'; [[ `hostname` =~ -([0-9]+)$ ]] || exit 1; ordinal=${BASH_REMATCH[1]}; if [[ $ordinal -eq 0 ]]; then run-postgresql-master; else run-postgresql-slave; fi;"
+		  "sh", "-c", "echo 'Setting up Postgres Master/Slave replication...'; [[ `hostname` =~ -([0-9]+)$ ]] || exit 1; ordinal=${BASH_REMATCH[1]}; if [[ $ordinal -eq 0 ]]; then run-postgresql-master; else run-postgresql-slave; fi;"
 		],
                 "ports": [
                   {
